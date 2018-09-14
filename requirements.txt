@@ -1,0 +1,6 @@
+Django
+channels
+uvicorn
+channels_redis
+redis
+requests
