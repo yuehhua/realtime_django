@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
+    'example',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +70,19 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'realtime.wsgi.application'
+ASGI_APPLICATION = "realtime.routing.application"
+
+# Django channels
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'asgi_redis.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('localhost', 6379)],
+        },
+        'ROUTING': 'realtime.routing.channel_routing',
+    }
+}
 
 
 # Database
